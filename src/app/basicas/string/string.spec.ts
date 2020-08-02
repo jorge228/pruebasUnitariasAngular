@@ -1,7 +1,7 @@
 import { mensaje } from './string';
 
 
-describe('Pruebas de Strings', () => {
+xdescribe('Pruebas de Strings', () => {
 
     it('Debe devolver un string', () => {
         const resp = mensaje('Jorge');
