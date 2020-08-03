@@ -35,6 +35,7 @@ describe('Incremendator Component', () => {
         component.cambiarValor(5);
         fixture.detectChanges();
         // como el fixture puede tardar un poco
+        // si lo quito, da error porque está en null
         fixture.whenStable().then(() => {
             const input = fixture.debugElement.query(By.css('input'));
             const elem = input.nativeElement;
@@ -42,6 +43,15 @@ describe('Incremendator Component', () => {
             expect(elem.value).toBe('55');
         });
 
+    });
+
+    it('Debe de +/- 5 con click en el botón', () => {
+        const botones = fixture.debugElement.queryAll(By.css('.btn-primary'));
+        // console.log(botones);
+        botones[0].triggerEventHandler('click',null);
+        expect(component.progreso).toBe(45);
+        botones[1].triggerEventHandler('click',null);
+        expect(component.progreso).toBe(50);
     });
 
 });
