@@ -26,5 +26,4 @@ export class MedicosService {
         map(resp => resp['medicos']));
   }
 
-
 }
