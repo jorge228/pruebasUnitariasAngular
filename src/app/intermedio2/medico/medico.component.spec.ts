@@ -1,5 +1,7 @@
 import { MedicoComponent } from './medico.component';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { MedicoService } from './medico.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 describe('Médico Component', () => {
@@ -12,8 +14,8 @@ describe('Médico Component', () => {
         // para que compile
         TestBed.configureTestingModule({
             declarations: [MedicoComponent],
-            providers: [],
-            imports: []
+            providers: [MedicoService],
+            imports: [HttpClientModule]
         });
 
         // para trabajar con el html
@@ -32,4 +34,5 @@ describe('Médico Component', () => {
         let res = component.saludarMedico(nombre);
         expect(res).toContain('Hola ' + nombre);
     });
+    
 });
