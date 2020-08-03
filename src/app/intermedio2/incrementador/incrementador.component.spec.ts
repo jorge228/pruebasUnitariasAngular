@@ -9,10 +9,10 @@ describe('Incremendator Component', () => {
     let component: IncrementadorComponent;
     let fixture: ComponentFixture<IncrementadorComponent>;
 
-    beforeEach( () => {
+    beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [ IncrementadorComponent ],
-            imports: [ FormsModule ]
+            declarations: [IncrementadorComponent],
+            imports: [FormsModule]
         });
 
         fixture = TestBed.createComponent(IncrementadorComponent);
@@ -25,9 +25,22 @@ describe('Incremendator Component', () => {
 
         component.leyenda = 'Progreso de carga';
         // dispara detección de cambios para que se modifica la leyenda
-        fixture.detectChanges(); 
+        fixture.detectChanges();
         const elem: HTMLElement = fixture.debugElement.query(By.css('h3')).nativeElement;
         expect(elem.innerHTML).toContain('Progreso de carga');
+
+    });
+
+    it('Debe mostrar en el input el valor del progreso', () => {
+        component.cambiarValor(5);
+        fixture.detectChanges();
+        // como el fixture puede tardar un poco
+        fixture.whenStable().then(() => {
+            const input = fixture.debugElement.query(By.css('input'));
+            const elem = input.nativeElement;
+            // console.log(elem);
+            expect(elem.value).toBe('55');
+        });
 
     });
 
